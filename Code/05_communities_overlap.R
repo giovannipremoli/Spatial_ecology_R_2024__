@@ -39,3 +39,10 @@ macaquetime <- macaque$Timecirc
 densityPlot(macaquetime, rug=T)
 
 overlapPlot(tigertime, macaquetime)
+
+#---- SQL 
+macaque <- kerinci[kerinci$Sps=="macaque",]
+summary(macaque)
+
+nomacaque <- kerinci[kerinci$Sps!="macaque",]
+summary(nomacaque)
