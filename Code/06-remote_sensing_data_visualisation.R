@@ -51,3 +51,47 @@ plot(b8, col=cl)
 # stack
 sentstack <- c(b2, b3, b4, b8)
 plot(sentstack, col=cl) # the visible wavelength gives us similar informations, the infrared no (b8)
+
+# plotting one layer 
+dev.off()
+plot(sentstack[[1]], col=cl)
+plot(sentstack[[4]], col=cl)
+
+# multiframe with different color palette 
+# we need to rebuild the multiframe 
+par(mfrow=c(2,2))
+
+clb <- colorRampPalette(c("dark blue", "blue", "light blue")) (100)
+plot(b2, col=clb)
+
+# exercise: apply the same concept to the green band (b3)
+clg <- colorRampPalette(c("dark green", "green", "light green")) (100)
+plot(b3, col=clg)
+
+# plotting red band (b4)
+clr <- colorRampPalette(c("dark red", "red", "pink")) (100)
+plot(b4, col=clr)
+
+# plotting the NIR band (b8)
+cln <- colorRampPalette(c("brown", "orange", "yellow")) (100)
+plot(b8, col=cln)
+
+par(mfrow=c(2,2))
+> plot(b2, col=clb)   
+> plot(b3, col=clg) 
+> plot(b4, col=clr)   
+> plot(b8, col=cln) 
+
+# we can combine all the colours in a scheme called RGB, overlap of 3 basic colours compose all the other ones 
+# you can't use R to see all the layers if you want to overlap, but you can combine them 
+# in our stack the third layer is the red so we can put 3, 2 for green, 1 for blue. see the photo on iphone 
+# RGB plotting 
+dev.off() # for removing the multiframe 
+im.plotRGB(sentstack, r=3, g=2, b=1) #sentstack is name of the image. u can write also red, green and blue for the letters or simply the numbers 3, 2, 1
+
+
+# we can't see 4 layers so we are add 1 to each layer. by that we remove first layer and view 4 (it's called false colouring, to see the infrared)
+# see the leaves slides, red and blue are absorbed by cloroplast for photosyntesis. CO2 is taken by rubisco protein. NIR is ultrareflected by plants (white arrow)
+im.plotRGB(sentstack, r=4, g=3, b=2) # false color image, the plants will be red 
+# we add NIR to distinguish elements like grasslands, forest's details and other things 
+
