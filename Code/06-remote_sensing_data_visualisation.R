@@ -95,3 +95,19 @@ im.plotRGB(sentstack, r=3, g=2, b=1) #sentstack is name of the image. u can writ
 im.plotRGB(sentstack, r=4, g=3, b=2) # false color image, the plants will be red 
 # we add NIR to distinguish elements like grasslands, forest's details and other things 
 
+
+# Lecture 21/11/2024
+
+im.list()
+
+b2 <- im.import("sentinel.dolomites.b2.tif")
+b3 <- im.import("sentinel.dolomites.b3.tif")
+b4 <- im.import("sentinel.dolomites.b4.tif")
+b8 <- im.import("sentinel.dolomites.b8.tif")
+
+sentstack <- c(b2, b3, b4, b8)
+plot(sentstack)
+im.plotRGB(sentstack, r=4, g=3, b=2) # the blue on top left is water that usually is black 
+
+im.plotRGB(sentstack, r=3, g=4, b=2) # NIR has been put on top of the green 
+im.plotRGB(sentstack, r=3, g=2, b=4) # blue, false color image   
