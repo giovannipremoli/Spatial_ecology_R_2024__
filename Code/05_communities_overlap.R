@@ -1,17 +1,18 @@
 # Code to estimate the temporal overlap between species 
 
-# Install.packages("overlap")
-
+install.packages("overlap")
 library(overlap)
 
-data(kerinci)
+data(kerinci) # we want to use only some data called kerinci 
 
-head(kerinci)  #to show the first 6 rows of kerinci
+head(kerinci)  # to show the first 6 rows of kerinci
+names(kerinci) # to show the name of columns 
 
 kerinci
 
 summary(kerinci)
 
+# time is a linear dimension, but we want the circular dimension as radiance and we obtain that by multiplying per 2pigreco
 kerinci$Timecirc <- kerinci$Time * 2 * pi # we are creating a new column 
 summary(kerinci)
 
@@ -38,7 +39,7 @@ macaquetime <- macaque$Timecirc
 
 densityPlot(macaquetime, rug=T)
 
-overlapPlot(tigertime, macaquetime)
+overlapPlot(tigertime, macaquetime) # to see how the two species are related in time
 
 #---- SQL 
 macaque <- kerinci[kerinci$Sps=="macaque",]
