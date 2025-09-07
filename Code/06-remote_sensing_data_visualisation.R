@@ -1,17 +1,20 @@
 # Code for remote sensing data handling and analysis
 
-# install.packages("devtools")
-# install_github
+install.packages("devtools")
+install_github("ducciorocchini/imageRy") # function of devtools 
 
 library(terra)
 library(imageRy)
+
+install.packages("ggplot2")
+library(ggplot2)
 
 # listing data inside imageRy
 im.list()
 # every sensor in recording one wavelength, every single layer is called band. b2 in the 25 data is band2
 
 # sentinel 2 bands 
-https://gisgeography.com/sentinel-2-bands-combinations/
+# https://gisgeography.com/sentinel-2-bands-combinations/
 
 # importing the data 
 b2 <- im.import("sentinel.dolomites.b2.tif")
