@@ -12,8 +12,6 @@ file <- system.file("external/species.shp", package="sdm") # / means that we wan
 # with the last part of the command we're expliciting that we want the external from the package sdm since external is in all the folders 
 file
 
-# [1] C:/Users/giovanni/AppData/Local/R/win-library/4.4/sdm/external/species.shp" ????
-
 # using vect() function to make it readable for R
 rana <- vect(file) # we obtain a series of info class spatvect, that is an object from terra that shows vectorial spatial data as points, vectors or polygones 
 
