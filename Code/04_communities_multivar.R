@@ -1,6 +1,6 @@
 # the presentation is on the professor's account -> in situ data collection, multivariate analysis, dimensionality -> 04 
 # hyper-niche o nicchia -> environment with the best condition for a specie 
-# our brain can only see 3 dimensions, so a fouth plot is not addable. We need to compact the datas. For instance, let's reduce 3 dimensions to 2 dimensions
+# our brain can only see 3 dimensions, so a fourth plot is not addable. We need to compact the datas. For instance, let's reduce 3 dimensions to 2 dimensions
 # for doing that we have to imagine to solve a cube into a foldable paper 
 # let's imagine an hypercube, an immaginary cube that solves himself in 4 dimensions, and aplly this cube in the solved cube in 2 dimensions -> there's a paint with jesus on an hypercube cross
 # let's draw 2 axis with some points that are on the bisettrice or nearby that. The points information are 50% given by the axis 1 and 50% by the axis 2. If we draw the bisettrice that's our Component 1 and his axis will be Component 2. In this situation 90% of the information are given by Component1 and only 10% are given by Component2. That's an example fo PCA -> Principal Component Analysis, and in this case the principal is Component1
@@ -8,7 +8,7 @@
 
 # Code for multivariate analysis of species x plot data in communities 
 
-# install.packages("vegan")
+install.packages("vegan")
 library(vegan) 
 
 data(dune)
@@ -19,7 +19,7 @@ view(dune)
 
 # decorana function analysis in R, it's useful when the datas are dispersed
 # Analysis
-multivar <- decorana(dune) # dune si our dataset
+multivar <- decorana(dune) # dune is our dataset
 multivar 
 
 # the lenght of axis rappresent the, the aim is the percentage of datas incorporated in 2 axis 
