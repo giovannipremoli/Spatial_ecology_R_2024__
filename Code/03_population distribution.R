@@ -53,7 +53,7 @@ elevmap
 plot(elevmap)
 
 # exercise: change the colors of the elevation map by the colorRampPalette function
-cl <- colorRampPalette(c("blue", "orange", "purple4"))(100)
+cl <- colorRampPalette(c("blue", "orange", "green"))(100)
 
 # exercise: plot the presences together with elevation map
 plot(elevmap, col=cl)
