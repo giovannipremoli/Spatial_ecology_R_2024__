@@ -18,7 +18,7 @@ rana$Occurrence
 plot(rana)
 
 # we're extracting from rana only the data we're looking for 
-pres <- rana[rana$Occurrence==1] # == means equal while != not equal
+pres <- rana[rana$Occurrence==1,] # == means equal while != not equal
 
 par(mfrow=c(1,2))
 plot(rana)
@@ -26,7 +26,7 @@ plot(pres)
 
 # exercise: select data from rana with only absences
 # for absences there's more uncertainity cause you're not sure if the animal in not there, maybe you only haven't see it 
-abse <- rana[rana$Occurrence==0]
+abse <- rana[rana$Occurrence==0,]
 plot(abse)
 
 # exercise: plot in a multiframe presence beside absences 
