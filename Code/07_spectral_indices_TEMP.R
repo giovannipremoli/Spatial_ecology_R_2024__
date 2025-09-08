@@ -48,14 +48,19 @@ im.plotRGB(m2006, r=3, g=2, b=1)
 # if the plant is dead there's no photosyntesis, the points in the graph will be more near to each other DVI= 60 
 
 # Difference Vegetation Index in 1992 
+# we stated that 1st element is NIR and 2nd element is red 
+# for each pixel from NIR band the same pixel from red band is subtracted 
+# since the image is 8 bit, DVI can vary from 255 to -255 
+# if NIR is max and red is 0 = 255
+# if red is max and nir is 0 = -255
 dvi1992 = m1992[[1]] - m1992[[2]]  # watch the 10 row 
 
 dev.off()
 cl <- colorRampPalette(c("darkblue", "yellow", "red", "black")) (100)
-plot(dvi1992, col=cl)
+plot(dvi1992, col=cl) # DVI is high
 
 dvi2006 = m2006[[1]] - m2006[[2]]
-plot(dvi2006, col=cl)
+plot(dvi2006, col=cl) # DVI is low
 
 # for building the multiframe you need to do all these 3 functions together 
 par(mfrow=c(1,2))
@@ -63,7 +68,7 @@ plot(dvi1992, col=cl)
 plot(dvi2006, col=cl)
 
 # NDVI does the same but is a normalized valor, if we are using a scale of 100 or 1000 and the red is 0 if we don't normalize that we obtain the same value 
-# NDVI is NIV/NIV+red (see the slide)
+# NDVI is DVI/NIR+red, is usefull cause you can compare every image from different ranges 
 ndvi1992 = dvi1992 / (m1992[[1]] + m1992[[2]])
 ndvi2006 = dvi2006 / (m2006[[1]] + m2006[[2]])
 
