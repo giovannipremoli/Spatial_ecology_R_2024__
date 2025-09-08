@@ -1,6 +1,8 @@
 # Code for remote sensing data handling and analysis
 
 install.packages("devtools")
+library(devtools)
+
 install_github("ducciorocchini/imageRy") # function of devtools 
 
 library(terra)
@@ -20,7 +22,7 @@ im.list()
 b2 <- im.import("sentinel.dolomites.b2.tif")
 
 # for changing colors 
-cl <- colorRampPalette(c("black", "grey", "light grey")) (100)
+cl <- colorRampPalette(c("black", "grey", "lightgrey")) (100)
 plot(b2, col=cl)
 
 # passive sensors and active sensors (watch the slide with the sun and sensors, before radiant flux and reflectance) 
