@@ -1,4 +1,4 @@
-# PCA
+# PCA - principal component analysis
 
 library(imageRy)
 library(terra)
