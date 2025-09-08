@@ -12,7 +12,7 @@ install.packages("vegan")
 library(vegan) 
 
 data(dune)
-data 
+data # for obtaining the matrix
 
 head(dune) # to show only the first 6 plots, so it's more compact
 view(dune)
