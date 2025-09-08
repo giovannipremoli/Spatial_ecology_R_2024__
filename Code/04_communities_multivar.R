@@ -35,7 +35,6 @@ total
 [1] 9.59643
 
 # Proportions 
-# dca1 divided by 100
 prop1 = dca1/total
 prop2 = dca2/total 
 prop3 = dca3/total
