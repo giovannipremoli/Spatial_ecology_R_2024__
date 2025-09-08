@@ -14,7 +14,7 @@ sentpc <- im.pca(sent)
 # gave us 4 values of sd for each band
 
 # extract pc1 that has more variability so more info
-pc1 <- sentpc[[1]] #88,59% of variability
+pc1 <- sentpc[[1]] 
 pc1
 
 # calculate sd on top of pc1
