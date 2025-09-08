@@ -15,7 +15,7 @@ data(dune)
 data # for obtaining the matrix
 
 head(dune) # to show only the first 6 plots, so it's more compact
-view(dune)
+View(dune)
 
 # decorana function analysis in R, it's useful when the datas are dispersed
 # Analysis
