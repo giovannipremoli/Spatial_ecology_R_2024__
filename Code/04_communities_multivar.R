@@ -22,8 +22,8 @@ View(dune)
 multivar <- decorana(dune) # dune is our dataset
 multivar 
 
-# the lenght of axis rappresent the, the aim is the percentage of datas incorporated in 2 axis 
-
+# the lenght of axis rappresent the amount of range variability represented by the axis, the aim is to see the percentage of original range variability incorporated in 2 axis 
+# we can use maximum 3 axis cause our brains work in 3 dimensions 
 dca1 = 3.7004
 dca2 = 3.1166
 dca3 = 1.30055
