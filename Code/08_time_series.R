@@ -6,8 +6,8 @@ library(imageRy)
 im.list() # EN menas european nitrogen 
 
 # importing data 
-EN01 <- im.import("EN_01.png")
-EN13 <- im.import("EN_13.png") # those are processed datas, not direct from the satellite 
+EN01 <- im.import("EN_01.png") # it shows the amount of nitrogen in Europe
+EN13 <- im.import("EN_13.png") # those are processed datas, not direct from the satellite. stop of human activities with covid
 
 EN01
 difEN = EN01[[1]] - EN13[[1]]
@@ -26,6 +26,8 @@ plot(gr[[4]])
 par(mfrow=c(1,2))
 plot(gr[[1]]) 
 plot(gr[[4]])  # u need to give all the commands together 
+
+# in 2015 very low temperatures only in the internal area, more ice melting 
 
 difgr = gr[[1]] - gr[[4]]
 dev.off() # to cancel the previous multiframe 
