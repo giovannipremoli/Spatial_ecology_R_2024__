@@ -11,7 +11,7 @@ pairs(sent)
 
 # perform PCA on sent
 sentpc <- im.pca(sent)
-# gave us 4 values of sd for each band
+# gave us 3 values of sd for each band
 
 # extract pc1 that has more variability so more info
 pc1 <- sentpc[[1]] 
