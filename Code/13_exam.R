@@ -26,7 +26,10 @@ setwd("/Users/giovannipremoli/Desktop/spatial ecology in R")
 # Checking if the path is correct. 
 getwd()
 
-# Importing the 2019 Sentinel-2 images for the pre-fire analysis. TC stands for True Colors (bands: red, green and blue)and FC for False Colors (bands: NIR, green, blue). The images I've chosen are all cloudless.
+# PART 1: 2019 PRE-FIRE ANALYSIS
+
+# Importing the 2019 Sentinel-2 images from Copernicus Browser: https://browser.dataspace.copernicus.eu/. 
+#TC stands for True Colors (bands: red, green and blue)and FC for False Colors (bands: NIR, green, blue). The images I've chosen are all cloudless.
 tc19 <- rast("2019_TC.jpg") # rast() imports the file as a SpatRaster object, preserving its multilayer structure. 
 fc19 <- rast("2019_FC.jpg") 
 
@@ -51,6 +54,8 @@ stack19 <- c(r19, g19, b19, nir19)
 
 # Plotting the result to verify the 4 layers.
 plot(stack19)
+
+dev.off()
 
 # Visualizing the different bands in a RGB plot alternating their color representation. This is useful to highlight specific environmental features.
 im.plotRGB(stack19, r=4, g=2, b=3) # NIR on red. Healthy vegetation appear bright red.
@@ -97,13 +102,17 @@ pcsd19 <- focal(compactpca19, matrix(1/9,3,3), fun=sd)
 
 # Visualizing the final variability map using a colorblind-friendly palette.
 plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
+
+dev.off()
      
 # Classifying the image into 2 clusters: Forest (vegetation) and Other (rocks/water/bare soil).
 cl19 <- im.classify(stack19, num_clusters=2)
 
 # Plotting the classification to visually check the consistency of the results.
 plot(cl19, main = "Land Cover Classification 2019")     
-     
+
+dev.off()
+
 # Calculating the frequencies to get the percentage of land cover of each land cover class.
 f19 <- freq(cl19) # Number of pixels for each class
 tot19 <- ncell(cl19) # Total number of pixels in the image
@@ -112,3 +121,96 @@ p19
 # Class 1 (Forest) = 68.10995%     
 # Class 2 (Others) = 31.89005%
      
+# PART 2: POST-FIRE ANALYSIS 
+
+# Now I will repeat all the steps for the year 2020. Once I will have the data, the aim is to compare them to obtain important information.
+
+# Importing the 2020 Sentinel-2 images from Copernicus Browser: https://browser.dataspace.copernicus.eu/
+tc20 <- rast("2020_TC.jpg")
+fc20 <- rast("2020_FC.jpg")
+
+# Visualizing the two images from 2020.
+par(mfrow=c(2,1))
+plot(tc20)
+plot(fc20)
+
+dev.off()
+
+# Extracting the bands from 2020 images. 
+# From the TC image I'm taking the red (r), blue (b) and green (g) bands.
+r20 <- tc20[[1]]
+g20 <- tc20[[2]]
+b20 <- tc20[[3]]
+
+# From the FC image I'm taking the NIR band.
+nir20 <- fc20[[1]] 
+
+# Combining the bands in a single object.
+stack20 <- c(r20, g20, b20, nir20)
+
+# Plotting the result to verify the 4 layers.
+plot(stack20)
+
+dev.off()
+
+# Visualizing the different bands in a RGB plot alternating their color representation. 
+im.plotRGB(stack20, r=4, g=2, b=3) # NIR on red. Healthy vegetation appear bright red.
+im.plotRGB(stack20, r=1, g=4, b=3) # NIR on green. Active clorophylle is highlighted in green tones.
+im.plotRGB(stack20, r=1, g=2, b=4) # NIR on blue. Emphazize surface reflectance properties, useful to identify structural differences in the landscape.
+
+# Calculating the Normalized Difference Vegetation Index (NDVI). 
+# My goal is to assess forest's health after the fires of late 2019 - early 2020.
+# Formula: (NIR - red)/(NIR + red)
+
+ndvi20 <- (nir20 - r20)/(nir20 + r20)
+
+# Visualizing the NDVI map. 
+plot(ndvi20, col=viridis(100), main="NDVI 2020")
+
+dev.off()
+
+# Running the Principal Component Analysis on the 2020 stack. 
+pca20 <- im.pca(stack20)
+
+# Standard Deviations obtained from R:
+# pca1 = 
+# pca2 = 
+# pca3 = 
+# pca4 = 
+
+# Calculating the total variability as the sum of SDs of the components.
+tot19pca <- sum(22.300805, 13.894895, 8.694020, 2.365775)
+# 47.2555
+
+# Estimating the percentage of information represented by each axis.
+22.300805*100/47.2555 # 47.19% (PC1)
+13.894895*100/47.2555 # 29.40% (PC2)
+8.694020*100/47.2555 # 18.40% (PC3)
+2.365775*100/47.2555 # 5.01% (PC4)
+# PC1 and PC2 together cover ~76.59% of the original information, which is enough to describe the landscape structure.
+compactpca19 <- pca19[[1]] + pca19[[2]]
+
+# Calculating the Standard Deviation (pcsd19), based on the principal components, to measure the spatial hetereogeneity of the landscape. I'm applying focal() function to calculate SD in a 3x3 moving window.
+# Areas with high SD indicate high landscape complexity.
+pcsd19 <- focal(compactpca19, matrix(1/9,3,3), fun=sd) 
+
+# Visualizing the final variability map using a colorblind-friendly palette.
+plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
+
+dev.off()
+     
+# Classifying the image into 2 clusters: Forest (vegetation) and Other (rocks/water/bare soil).
+cl19 <- im.classify(stack19, num_clusters=2)
+
+# Plotting the classification to visually check the consistency of the results.
+plot(cl19, main = "Land Cover Classification 2019")     
+
+dev.off()
+
+# Calculating the frequencies to get the percentage of land cover of each land cover class.
+f19 <- freq(cl19) # Number of pixels for each class
+tot19 <- ncell(cl19) # Total number of pixels in the image
+p19 <- f19*100/tot19 # Percentage for each class
+p19     
+# Class 1 (Forest) = 68.10995%     
+# Class 2 (Others) = 31.89005%
