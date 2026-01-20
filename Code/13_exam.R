@@ -212,5 +212,5 @@ f20 <- freq(cl20) # Number of pixels for each class
 tot20 <- ncell(cl20) # Total number of pixels in the image
 p20 <- f20*100/tot20 # Percentage for each class
 p20     
-# Class 1 (Forest) = 68.10995%     
-# Class 2 (Others) = 31.89005%
+# Class 1 (Forest) = 70.61403%     
+# Class 2 (Others) = 29.38597%
