@@ -73,7 +73,13 @@ dev.off()
 # My aim is to obtain the maximum amount of environmental variability in a single layer (pc1).
 pca19 <- im.pca(stack19)
 
-# Standard Deviations obtained from R.
+# Standard Deviations obtained from R:
+# pca1 = 22.300805
+# pca2 = 13.894895
+# pca3 = 8.694020
+# pca4 = 2.365775
+
+
 
 # Calculating the Standard Deviation (sd19) to measure the spatial hetereogeneity of the landscape.
 
