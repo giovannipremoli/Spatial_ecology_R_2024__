@@ -92,8 +92,10 @@ tot19pca <- sum(22.300805, 13.894895, 8.694020, 2.365775)
 compactpca19 <- pca19[[1]] + pca19[[2]]
 
 # Calculating the Standard Deviation (pcsd19), based on the principal components, to measure the spatial hetereogeneity of the landscape. I'm applying focal() function to calculate SD in a 3x3 moving window.
-# Areas with high SD indicate high landscape complexity 
-pcsd19 <- focal(compactpca19, matrix(1/9,3,3), 
+# Areas with high SD indicate high landscape complexity.
+pcsd19 <- focal(compactpca19, matrix(1/9,3,3), fun=sd) 
 
-
+# Visualizing the final variability map using a colorblind-friendly palette.
+plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)"
+     
 
