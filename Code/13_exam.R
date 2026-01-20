@@ -26,7 +26,8 @@ setwd("/Users/giovannipremoli/Desktop/spatial ecology in R")
 # Checking if the path is correct. 
 getwd()
 
-# PART 1: 2019 PRE-FIRE ANALYSIS
+
+## PART 1: 2019 PRE-FIRE ANALYSIS
 
 # Importing the 2019 Sentinel-2 images from Copernicus Browser: https://browser.dataspace.copernicus.eu/. 
 #TC stands for True Colors (bands: red, green and blue)and FC for False Colors (bands: NIR, green, blue). The images I've chosen are all cloudless.
@@ -118,10 +119,11 @@ f19 <- freq(cl19) # Number of pixels for each class
 tot19 <- ncell(cl19) # Total number of pixels in the image
 p19 <- f19*100/tot19 # Percentage for each class
 p19     
-# Class 1 (Forest) = 68.10995%     
-# Class 2 (Others) = 31.89005%
-     
-# PART 2: POST-FIRE ANALYSIS 
+# Class 1 (Others) = 68.10995%     
+# Class 2 (Forest) = 31.89005%
+
+
+## PART 2: POST-FIRE ANALYSIS 
 
 # Now I will repeat all the steps for the year 2020. Once I will have the data, the aim is to compare them to obtain important information.
 
@@ -214,3 +216,48 @@ p20 <- f20*100/tot20 # Percentage for each class
 p20     
 # Class 1 (Forest) = 70.61403%     
 # Class 2 (Others) = 29.38597%
+
+
+## PART 3: COMPARISONS
+
+# Visualizing the images:
+par(mfrow=c(2,2))
+plot(tc19, main = "TC19")
+plot(fc19, main = "FC19")
+plot(tc20, main = "TC20")
+plot(fc20, main = "FC20")
+
+dev.off()
+
+# Visualizing the images with different colors:
+par(mfrow=c(3,3))
+im.plotRGB(stack19, r=4, g=2, b=3) 
+im.plotRGB(stack19, r=1, g=4, b=3) 
+im.plotRGB(stack19, r=1, g=2, b=4)
+im.plotRGB(stack20, r=4, g=2, b=3) 
+im.plotRGB(stack20, r=1, g=4, b=3) 
+im.plotRGB(stack20, r=1, g=2, b=4)
+
+dev.off()
+
+# Comparing the NDVI
+par(mfrow=c(2,1))
+plot(ndvi19, col=viridis(100), main="NDVI 2019")
+plot(ndvi20, col=viridis(100), main="NDVI 2020")
+
+dev.off()
+
+# Comparing Landscape Variability due to SD
+par(mfrow=c(2,1))
+plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
+plot(pcsd20, col=viridis(100), main = "Landscape Variability 2020 (SD)")
+
+dev.off()
+
+# Comparing Landscape Classification 
+par(mfrow=c(2,1))
+plot(cl19, main = "Land Cover Classification 2019") 
+plot(cl20, main = "Land Cover Classification 2020") 
+
+
+
