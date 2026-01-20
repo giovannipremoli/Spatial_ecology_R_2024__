@@ -96,15 +96,19 @@ compactpca19 <- pca19[[1]] + pca19[[2]]
 pcsd19 <- focal(compactpca19, matrix(1/9,3,3), fun=sd) 
 
 # Visualizing the final variability map using a colorblind-friendly palette.
-plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)"
+plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
      
 # Classifying the image into 2 clusters: Forest (vegetation) and Other (rocks/water/bare soil).
 cl19 <- im.classify(stack19, num_clusters=2)
 
+# Plotting the classification to visually check the consistency of the results.
+plot(cl19, main = "Land Cover Classification 2019")     
+     
 # Calculating the frequencies to get the percentage of land cover of each land cover class.
 f19 <- freq(cl19) # Number of pixels for each class
 tot19 <- ncell(cl19) # Total number of pixels in the image
 p19 <- f19*100/tot19 # Percentage for each class
+p19     
 # Class 1 (Forest) = 68.10995%     
 # Class 2 (Others) = 31.89005%
      
