@@ -200,17 +200,17 @@ plot(pcsd20, col=viridis(100), main = "Landscape Variability 2020 (SD)")
 dev.off()
      
 # Classifying the image into 2 clusters: Forest (vegetation) and Other (rocks/water/bare soil).
-cl19 <- im.classify(stack19, num_clusters=2)
+cl20 <- im.classify(stack20, num_clusters=2)
 
 # Plotting the classification to visually check the consistency of the results.
-plot(cl19, main = "Land Cover Classification 2019")     
+plot(cl20, main = "Land Cover Classification 2020")     
 
 dev.off()
 
 # Calculating the frequencies to get the percentage of land cover of each land cover class.
-f19 <- freq(cl19) # Number of pixels for each class
-tot19 <- ncell(cl19) # Total number of pixels in the image
-p19 <- f19*100/tot19 # Percentage for each class
-p19     
+f20 <- freq(cl20) # Number of pixels for each class
+tot20 <- ncell(cl20) # Total number of pixels in the image
+p20 <- f20*100/tot20 # Percentage for each class
+p20     
 # Class 1 (Forest) = 68.10995%     
 # Class 2 (Others) = 31.89005%
