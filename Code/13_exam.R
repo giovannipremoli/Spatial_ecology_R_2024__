@@ -230,7 +230,7 @@ plot(fc20, main = "FC20")
 dev.off()
 
 # Visualizing the images with different colors:
-par(mfrow=c(3,3))
+par(mfrow=c(3,2))
 im.plotRGB(stack19, r=4, g=2, b=3) 
 im.plotRGB(stack19, r=1, g=4, b=3) 
 im.plotRGB(stack19, r=1, g=2, b=4)
