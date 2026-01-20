@@ -70,7 +70,7 @@ plot(ndvi19, col=viridis(100), main="NDVI 2019")
 dev.off()
 
 # Running the Principal Component Analysis on the 2019 stack. Useful to reduce data redundancy by compressing the information from all 4 spectral bands into fewer components.
-# My aim is to obtain the maximum amount of environmental variability in a single layer (pc1).
+# My aim is to obtain the maximum amount of environmental variability in fewer principal components, useful to have a more clear representation.
 pca19 <- im.pca(stack19)
 
 # Standard Deviations obtained from R:
@@ -79,9 +79,21 @@ pca19 <- im.pca(stack19)
 # pca3 = 8.694020
 # pca4 = 2.365775
 
+# Calculating the total variability as the sum of SDs of the components.
+tot19pca <- sum(22.300805, 13.894895, 8.694020, 2.365775)
+# 47.2555
 
+# Estimating the percentage of information represented by each axis.
+22.300805*100/47.2555 # 47.19% (PC1)
+13.894895*100/47.2555 # 29.40% (PC2)
+8.694020*100/47.2555 # 18.40% (PC3)
+2.365775*100/47.2555 # 5.01% (PC4)
+# PC1 and PC2 together cover ~76.59% of the original information, which is enough to describe the landscape structure.
+compactpca19 <- pca19[[1]] + pca19[[2]]
 
-# Calculating the Standard Deviation (sd19) to measure the spatial hetereogeneity of the landscape.
+# Calculating the Standard Deviation (pcsd19), based on the principal components, to measure the spatial hetereogeneity of the landscape. I'm applying focal() function to calculate SD in a 3x3 moving window.
+# Areas with high SD indicate high landscape complexity 
+pcsd19 <- focal(compactpca19, matrix(1/9,3,3), 
 
 
 
