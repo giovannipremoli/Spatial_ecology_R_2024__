@@ -173,26 +173,26 @@ dev.off()
 pca20 <- im.pca(stack20)
 
 # Standard Deviations obtained from R:
-# pca1 = 
-# pca2 = 
-# pca3 = 
-# pca4 = 
+# pca1 = 30.18312
+# pca2 = 28.80024
+# pca3 = 19.72079
+# pca4 = 5.34542
 
 # Calculating the total variability as the sum of SDs of the components.
-tot19pca <- sum(22.300805, 13.894895, 8.694020, 2.365775)
-# 47.2555
+tot19pca <- sum(30.18312, 28.80024, 19.72079, 5.34542)
+# 84.04957
 
 # Estimating the percentage of information represented by each axis.
-22.300805*100/47.2555 # 47.19% (PC1)
-13.894895*100/47.2555 # 29.40% (PC2)
-8.694020*100/47.2555 # 18.40% (PC3)
-2.365775*100/47.2555 # 5.01% (PC4)
-# PC1 and PC2 together cover ~76.59% of the original information, which is enough to describe the landscape structure.
-compactpca19 <- pca19[[1]] + pca19[[2]]
+30.18312*100/84.04957 # 35.91% (PC1)
+28.80024*100/84.04957 # 34.26% (PC2)
+19.72079*100/84.04957 # 23.46% (PC3)
+5.34542*100/84.04957 # 6.36% (PC4)
+# PC1 and PC2 together cover ~70.15% of the original information, which is enough to describe the landscape structure.
+compactpca20 <- pca20[[1]] + pca20[[2]]
 
 # Calculating the Standard Deviation (pcsd19), based on the principal components, to measure the spatial hetereogeneity of the landscape. I'm applying focal() function to calculate SD in a 3x3 moving window.
 # Areas with high SD indicate high landscape complexity.
-pcsd19 <- focal(compactpca19, matrix(1/9,3,3), fun=sd) 
+pcsd20 <- focal(compactpca20, matrix(1/9,3,3), fun=sd) 
 
 # Visualizing the final variability map using a colorblind-friendly palette.
 plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
