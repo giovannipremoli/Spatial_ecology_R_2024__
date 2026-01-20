@@ -195,7 +195,7 @@ compactpca20 <- pca20[[1]] + pca20[[2]]
 pcsd20 <- focal(compactpca20, matrix(1/9,3,3), fun=sd) 
 
 # Visualizing the final variability map using a colorblind-friendly palette.
-plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
+plot(pcsd20, col=viridis(100), main = "Landscape Variability 2020 (SD)")
 
 dev.off()
      
