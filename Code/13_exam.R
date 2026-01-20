@@ -69,7 +69,13 @@ plot(ndvi19, col=viridis(100), main="NDVI 2019")
 
 dev.off()
 
+# Running the Principal Component Analysis on the 2019 stack. Useful to reduce data redundancy by compressing the information from all 4 spectral bands into fewer components.
+# My aim is to obtain the maximum amount of environmental variability in a single layer (pc1).
+pca19 <- im.pca(stack19)
 
+# Standard Deviations obtained from R.
+
+# Calculating the Standard Deviation (sd19) to measure the spatial hetereogeneity of the landscape.
 
 
 
