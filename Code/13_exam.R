@@ -1,4 +1,4 @@
-# Multitemporal analysis of vegetation health and landscape variability in the Blue Mountains National Park (Australia) due to the bushfires of 2019-2020.
+## Multitemporal analysis of vegetation health and landscape variability in the Blue Mountains National Park (Australia) due to the bushfires of 2019-2020.
 
 # Installing the packages necessary for the analysis.  
 install.packages("devtools") # Needed to download packages directly from GitHub repositories.
@@ -227,6 +227,7 @@ plot(fc19, main = "FC19")
 plot(tc20, main = "TC20")
 plot(fc20, main = "FC20")
 
+# By comparing these images, there are clear differences also in the visible spectrum. The exposed soil, due to the fires, is more abboundant in 2020. 
 dev.off()
 
 # Visualizing the images with different colors:
@@ -238,6 +239,11 @@ im.plotRGB(stack20, r=4, g=2, b=3)
 im.plotRGB(stack20, r=1, g=4, b=3) 
 im.plotRGB(stack20, r=1, g=2, b=4)
 
+# First column (NIR on red): in the 2020 image the red color is less continuous, it means that there's a reduction in NIR reflectance due to the fires. The vegetation is less healthy.
+# Second column (NIR on green): in the 2020 image comes out more irregular patches, that's a typical output caused by early regrowing and exposed soil. The vegetation is more stressed.
+# Third column (NIR on blue): in the 2020 image there's more landscape heterogeneity.
+# Conclusion: Multispectral RGB colouring, obtained by combining different spectral bands, highlight an increase in spatial heterogeneity between 2019 and 2020. While the overall geomorphological structure remain recognizable, post-fire images shows a more fragmented spectral pattern, consistent with vegetation healt reduction and patchy recovery following the stressful event.
+# I will make a NDVI analysis to highlight more these differences, not made to evident by the RGB analysis.
 dev.off()
 
 # Comparing the NDVI
@@ -245,6 +251,9 @@ par(mfrow=c(2,1))
 plot(ndvi19, col=viridis(100), main="NDVI 2019")
 plot(ndvi20, col=viridis(100), main="NDVI 2020")
 
+# 2019: NDVI has mean elevated and homogeneous values all over the image. There're spatial continuous consisntency along valleys and slopes. These data represent a structurally stable landscape.
+# 2020: There's a generalized diminuation of NDVI values, with the appearing of large areas with low NDVI. The general pattern is more fragmented and there're more evident contrast between near patches. These are effects caused by the loss of biomass, by the vegetation's stress and by the disomogeneous effects of fire.
+# Conclusion: While pre-fire NDVI values appear relatively high and spatially continuous, post-fire conditions are characterized by reduced NDVI and a fragmented spatial pattern, reflecting heterogeneous vegetation damage and early recovery processes.
 dev.off()
 
 # Comparing Landscape Variability due to SD
@@ -252,6 +261,9 @@ par(mfrow=c(2,1))
 plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
 plot(pcsd20, col=viridis(100), main = "Landscape Variability 2020 (SD)")
 
+# 2019: SD values result generally low and spatially coherent, indicating a relative homogeneous landscape. The main geomorphological structures (like valleys, slopes and river) are recognizible but not too spatially discontiuous.
+# 2020: While maintaining a similar global distribution, I can notice a low increment of variability, with a stronger presence of high SD pixels (yellow) and a more fragmented distribution. These outputs are consistent with an heterogenous stress event like fire.
+# Coclusion: Differences between 2019 and 2020 are mainly expressed in terms of fine-scale spatial heterogeneity and highlight a general increment in spatial complexity in post-fire period.
 dev.off()
 
 # Comparing Landscape Classification 
@@ -259,5 +271,6 @@ par(mfrow=c(2,1))
 plot(cl19, main = "Land Cover Classification 2019") 
 plot(cl20, main = "Land Cover Classification 2020") 
 
-
-
+# 2019: The unsupervised landscape classification shows relatively large and continuous patches of the two classes. This distribution reflects moderate landscape variability and a structural stable environment, consistent with an healthy forest.
+# 2020: There's an increased fragmentation and a more irregular distribution of small patches. One spectral class become dominant, while the other is confined to narrower and discontinuous areas.
+# Conclusion: The classification results don't indicate an increase in forest cover after the bushfires, instead the domination of one of the two classes in 2020 reflects a reorganization of spectral responses caused by fire disturbance, vegetation stress and early regrowth. Because the classification is unssupervised, class proportions represent changes in spatial configuration and spectral similarity rather than true gain or loss in forest covered area. This pattern is consistent with the general loss of NDVI in 2020 and increased landscape fragmentation.
