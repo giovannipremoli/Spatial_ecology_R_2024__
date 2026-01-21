@@ -63,14 +63,24 @@ im.plotRGB(stack19, r=4, g=2, b=3) # NIR on red. Healthy vegetation appear brigh
 im.plotRGB(stack19, r=1, g=4, b=3) # NIR on green. Active clorophylle is highlighted in green tones.
 im.plotRGB(stack19, r=1, g=2, b=4) # NIR on blue. Emphazize surface reflectance properties, useful to identify structural differences in the landscape.
 
-# Calculating the Normalized Difference Vegetation Index (NDVI). The aim is to quantify vegetation health by measuirng the difference between NIR (reflected by leaves) and red wavelengths (absorbed by chlorophyll).
+# Calculating the Divergence Vegetation Index (DVI). 
+# This index measures the raw difference in reflectance. In a 8-bit image, an healthy plant has an high NIR reflectance (reflected by leaves) and low red reflectance due to absorption of these wavelengths by the clorophyll (DVI>90), while if the plant is stressed or dead DVI drops. 
 # My goal is to assess forest's health before the fires of late 2019 - early 2020.
-# Formula: (NIR - red)/(NIR + red)
+dvi19 <- nir19 - r19
+dvi19 # The range covers between -75 and 179
 
+# Visualizing the plotted DVI. Instead of creating a manual palette, I'm using the viridis function to ensure that maps are accesible to colorblind viewers.
+# I'm also assigning a title to the plot with main =.
+plot(dvi19, col=viridis(100), main="DVI 2019")
+
+dev.off()
+
+# Calculating the Normalized Difference Vegetation Index (NDVI). 
+# Normalizing this value allow me to compare the result with any other.
+# Formula: (NIR - red)/(NIR + red)
 ndvi19 <- (nir19 - r19)/(nir19 + r19)
 
-# Visualizing the NDVI map. Instead of creating a manual palette, I'm using the viridis function to ensure that maps are accesible to colorblind viewers.
-# I'm also assigning a title to the plot with main =.
+# Visualizing the NDVI map. 
 plot(ndvi19, col=viridis(100), main="NDVI 2019")
 
 dev.off()
@@ -160,10 +170,17 @@ im.plotRGB(stack20, r=4, g=2, b=3) # NIR on red. Healthy vegetation appear brigh
 im.plotRGB(stack20, r=1, g=4, b=3) # NIR on green. Active clorophylle is highlighted in green tones.
 im.plotRGB(stack20, r=1, g=2, b=4) # NIR on blue. Emphazize surface reflectance properties, useful to identify structural differences in the landscape.
 
-# Calculating the Normalized Difference Vegetation Index (NDVI). 
+# Calculating the Divergence Vegetation Index (DVI). 
 # My goal is to assess forest's health after the fires of late 2019 - early 2020.
-# Formula: (NIR - red)/(NIR + red)
+dvi20 <- nir20 - r20
+dvi20 # The range covers between -91 and 200
 
+# Visualizing the plotted DVI. 
+plot(dvi20, col=viridis(100), main="DVI 2020")
+
+dev.off()
+
+# Calculating the Normalized Difference Vegetation Index (NDVI). 
 ndvi20 <- (nir20 - r20)/(nir20 + r20)
 
 # Visualizing the NDVI map. 
@@ -246,10 +263,18 @@ im.plotRGB(stack20, r=1, g=2, b=4)
 # I will make a NDVI analysis to highlight more these differences, not made to evident by the RGB analysis.
 dev.off()
 
-# Comparing the NDVI
-par(mfrow=c(2,1))
+# Comparing DVI outputs:
+# 2019: DVI range covers from -75 to 179. 
+# 2020: DVI range covers from -90 to 200.
+# Conclusion: The most important data to consider in this situation is that the minimum range is lower in 2020, so the red wavelengths are less absorbed by clorophyll and then vegetation is less or stressed. Although in 2020 the reflectance range is higher (200), but that could be caused by the exposing of bare soil that reflects well the NIR bands.
+
+# Visualizing the NDVI during the years and the difference between them.
+par(mfrow=c(3,1))
 plot(ndvi19, col=viridis(100), main="NDVI 2019")
 plot(ndvi20, col=viridis(100), main="NDVI 2020")
+
+diff_ndvi <- ndvi19 - ndvi20
+plot(diff_ndvi, col=viridis(100), main="NDVI difference: Biomass Loss")
 
 # 2019: NDVI has mean elevated and homogeneous values all over the image. There're spatial continuous consisntency along valleys and slopes. These data represent a structurally stable landscape.
 # 2020: There's a generalized diminuation of NDVI values, with the appearing of large areas with low NDVI. The general pattern is more fragmented and there're more evident contrast between near patches. These are effects caused by the loss of biomass, by the vegetation's stress and by the disomogeneous effects of fire.
