@@ -273,8 +273,8 @@ par(mfrow=c(3,1))
 plot(ndvi19, col=viridis(100), main="NDVI 2019")
 plot(ndvi20, col=viridis(100), main="NDVI 2020")
 
-diff_ndvi <- ndvi19 - ndvi20
-plot(diff_ndvi, col=viridis(100), main="NDVI difference: Biomass Loss")
+ndvi_diff <- ndvi19 - ndvi20
+plot(ndvi_diff, col=viridis(100), main="NDVI difference: Biomass Loss")
 
 # 2019: NDVI has mean elevated and homogeneous values all over the image. There're spatial continuous consisntency along valleys and slopes. These data represent a structurally stable landscape.
 # 2020: There's a generalized diminuation of NDVI values, with the appearing of large areas with low NDVI. The general pattern is more fragmented and there're more evident contrast between near patches. These are effects caused by the loss of biomass, by the vegetation's stress and by the disomogeneous effects of fire.
