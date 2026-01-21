@@ -181,7 +181,7 @@ pca20 <- im.pca(stack20)
 # pca4 = 5.34542
 
 # Calculating the total variability as the sum of SDs of the components.
-tot19pca <- sum(30.18312, 28.80024, 19.72079, 5.34542)
+tot20pca <- sum(30.18312, 28.80024, 19.72079, 5.34542)
 # 84.04957
 
 # Estimating the percentage of information represented by each axis.
@@ -273,4 +273,4 @@ plot(cl20, main = "Land Cover Classification 2020")
 
 # 2019: The unsupervised landscape classification shows relatively large and continuous patches of the two classes. This distribution reflects moderate landscape variability and a structural stable environment, consistent with an healthy forest.
 # 2020: There's an increased fragmentation and a more irregular distribution of small patches. One spectral class become dominant, while the other is confined to narrower and discontinuous areas.
-# Conclusion: The classification results don't indicate an increase in forest cover after the bushfires, instead the domination of one of the two classes in 2020 reflects a reorganization of spectral responses caused by fire disturbance, vegetation stress and early regrowth. Because the classification is unssupervised, class proportions represent changes in spatial configuration and spectral similarity rather than true gain or loss in forest covered area. This pattern is consistent with the general loss of NDVI in 2020 and increased landscape fragmentation.
+# Conclusion: Due to unsupervised classification function the numbers of the two classes are inverted between 2019 and 2020. The classification results don't indicate an increase in forest cover after the bushfires, instead the domination of one of the two classes in 2020 reflects a reorganization of spectral responses caused by fire disturbance, vegetation stress and early regrowth. Because the classification is unssupervised, class proportions represent changes in spatial configuration and spectral similarity rather than true gain or loss in forest covered area. This pattern is consistent with the general loss of NDVI in 2020 and increased landscape fragmentation.
