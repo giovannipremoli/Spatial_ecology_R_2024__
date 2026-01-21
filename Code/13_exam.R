@@ -266,8 +266,8 @@ dev.off()
 # Comparing DVI outputs:
 # 2019: DVI range covers from -75 to 179. 
 # 2020: DVI range covers from -90 to 200.
-# Conclusion: The most important data to consider in this situation is that the minimum range is lower in 2020, so the red wavelengths are less absorbed by clorophyll and then vegetation is less or stressed. Although in 2020 the reflectance range is higher (200), but that could be caused by the exposing of bare soil that reflects well the NIR bands.
-
+# Conclusion: The most important data to consider is the decrease in minimum range in 2020 (-90). This indicates areas where red reflectance exceed the NIR reflectance, a clear sign of clorophyll loss: with less photosynthesis, red wavelengths are less absorbed and so vegetation is less or stressed. 
+# Regarding the higher maximum value in 2020 (200), it's likely not due to better vegetation, but rather to different atmospheric illumination or the high overall reflectance of exposed bare rocks or soil, which can reflect strongly across the entire spectrum.
 # Visualizing the NDVI during the years and the difference between them.
 par(mfrow=c(3,1))
 plot(ndvi19, col=viridis(100), main="NDVI 2019")
