@@ -291,11 +291,15 @@ plot(pcsd20, col=viridis(100), main = "Landscape Variability 2020 (SD)")
 # Coclusion: Differences between 2019 and 2020 are mainly expressed in terms of fine-scale spatial heterogeneity and highlight a general increment in spatial complexity in post-fire period.
 dev.off()
 
-# Comparing Landscape Classification 
+# Comparing percentage of land cover landscape classification
+# 2019:"Forest" coverage -> 31.89005%
+# 2020:"Forest" coverage -> 29.38597%
+# Net loss = ~2.5% of "forest" coverage 
+
 par(mfrow=c(2,1))
 plot(cl19, main = "Land Cover Classification 2019") 
 plot(cl20, main = "Land Cover Classification 2020") 
 
 # 2019: The unsupervised landscape classification shows relatively large and continuous patches of the two classes. This distribution reflects moderate landscape variability and a structural stable environment, consistent with an healthy forest.
 # 2020: There's an increased fragmentation and a more irregular distribution of small patches. 
-# Conclusion: Due to unsupervised classification function the numbers of the two classes are inverted between 2019 and 2020. The classification results indicate a reduction of 3% in Forest class in 2020 after bushfires. Although, because the classification is unssupervised, class proportions represent changes in spatial configuration and spectral similarity rather than true gain or loss in forest covered area. This pattern is consistent with the general loss of NDVI in 2020 and increased landscape fragmentation.
+# Conclusion: Due to unsupervised classification function the numbers of the two classes are inverted between 2019 and 2020. The classification results indicate a reduction of 2.5% in Forest class in 2020 after bushfires. Although, because the classification is unssupervised, class proportions represent changes in spatial configuration and spectral similarity rather than true gain or loss in forest covered area. This pattern is consistent with the general loss of NDVI in 2020 and increased landscape fragmentation.
