@@ -262,7 +262,7 @@ plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
 plot(pcsd20, col=viridis(100), main = "Landscape Variability 2020 (SD)")
 
 # 2019: SD values result generally low and spatially coherent, indicating a relative homogeneous landscape. The main geomorphological structures (like valleys, slopes and river) are recognizible but not too spatially discontiuous.
-# 2020: While maintaining a similar global distribution, I can notice a low increment of variability, with a stronger presence of high SD pixels (yellow) and a more fragmented distribution. These outputs are consistent with an heterogenous stress event like fire.
+# 2020: While maintaining a similar global distribution, I can notice a low increment of variability, with a stronger presence of high SD pixels (yellow) and a more fragmented distribution. These outputs are consistent with an heterogenous stress event like fire. The fire acted as a "disturbing agent" thet broke the spatial continuity noticed in 2019 and generated "disorder".
 # Coclusion: Differences between 2019 and 2020 are mainly expressed in terms of fine-scale spatial heterogeneity and highlight a general increment in spatial complexity in post-fire period.
 dev.off()
 
