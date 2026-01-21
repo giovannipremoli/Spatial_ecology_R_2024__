@@ -30,7 +30,7 @@ getwd()
 ## PART 1: 2019 PRE-FIRE ANALYSIS
 
 # Importing the 2019 Sentinel-2 images from Copernicus Browser: https://browser.dataspace.copernicus.eu/. 
-#TC stands for True Colors (bands: red, green and blue)and FC for False Colors (bands: NIR, green, blue). The images I've chosen are all cloudless.
+# TC stands for True Colors (bands: red, green and blue)and FC for False Colors (bands: NIR, green, blue). The images I've chosen are all cloudless.
 tc19 <- rast("2019_TC.jpg") # rast() imports the file as a SpatRaster object, preserving its multilayer structure. 
 fc19 <- rast("2019_FC.jpg") 
 
