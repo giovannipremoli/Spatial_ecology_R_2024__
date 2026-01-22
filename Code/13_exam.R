@@ -247,6 +247,7 @@ plot(fc20, main = "FC20")
 # By comparing these images, there are clear differences also in the visible spectrum. The exposed soil, due to the fires, is more abboundant in 2020. 
 dev.off()
 
+
 # Visualizing the images with different colors:
 par(mfrow=c(3,2))
 im.plotRGB(stack19, r=4, g=2, b=3) 
@@ -262,6 +263,7 @@ im.plotRGB(stack20, r=1, g=2, b=4)
 # Conclusion: Multispectral RGB colouring, obtained by combining different spectral bands, highlight an increase in spatial heterogeneity between 2019 and 2020. While the overall geomorphological structure remain recognizable, post-fire images shows a more fragmented spectral pattern, consistent with vegetation healt reduction and patchy recovery following the stressful event.
 # I will make a NDVI analysis to highlight more these differences, not made to evident by the RGB analysis.
 dev.off()
+
 
 # Comparing DVI outputs:
 # 2019: DVI range covers from -75 to 179. 
@@ -281,6 +283,7 @@ plot(ndvi_diff, col=viridis(100), main="NDVI difference: Biomass Loss")
 # Conclusion: While pre-fire NDVI values appear relatively high and spatially continuous, post-fire conditions are characterized by reduced NDVI and a fragmented spatial pattern, reflecting heterogeneous vegetation damage and early recovery processes.
 dev.off()
 
+
 # Comparing Landscape Variability due to SD
 par(mfrow=c(2,1))
 plot(pcsd19, col=viridis(100), main = "Landscape Variability 2019 (SD)")
@@ -291,11 +294,11 @@ plot(pcsd20, col=viridis(100), main = "Landscape Variability 2020 (SD)")
 # Coclusion: Differences between 2019 and 2020 are mainly expressed in terms of fine-scale spatial heterogeneity and highlight a general increment in spatial complexity in post-fire period.
 dev.off()
 
+
 # Comparing percentage of land cover landscape classification
 # 2019:"Forest" coverage -> 31.89005%
 # 2020:"Forest" coverage -> 29.38597%
 # Net loss = ~2.5% of "forest" coverage 
-
 par(mfrow=c(2,1))
 plot(cl19, main = "Land Cover Classification 2019") 
 plot(cl20, main = "Land Cover Classification 2020") 
@@ -303,3 +306,21 @@ plot(cl20, main = "Land Cover Classification 2020")
 # 2019: The unsupervised landscape classification shows relatively large and continuous patches of the two classes. This distribution reflects moderate landscape variability and a structural stable environment, consistent with an healthy forest.
 # 2020: There's an increased fragmentation and a more irregular distribution of small patches. 
 # Conclusion: Due to unsupervised classification function the numbers of the two classes are inverted between 2019 and 2020. The classification results indicate a reduction of 2.5% in Forest class in 2020 after bushfires. Although, because the classification is unssupervised, class proportions represent changes in spatial configuration and spectral similarity rather than true gain or loss in forest covered area. This pattern is consistent with the general loss of NDVI in 2020 and increased landscape fragmentation.
+
+
+# Statystical analysis with ggplot2
+# Building a dataframe to visualize the class percentage from 2019 and 2020.
+y19 <- c(31.89, 68.11) # Forest, Others
+y20 <- c(29.39, 70.61) # Forest, Others
+classes <- c("Forest", "Others")
+# Creating the dataframe
+dataF <- data.frame(classes, y19, y20)
+dataF
+
+# Visualizing a clear quantitative representation
+F19 <- ggplot(dataF, aes(x=classes, y=y19, fill=classes)) + geom_bar(stat="identity") + scale_fill_viridis_d(option="D") + ylim(c(0, 100)) + labs(title="Land Cover 2019 (%)", y="Percentage", x="Class")
+F20 <- ggplot(dataF, aes(x=classes, y=y20, fill=classes)) + geom_bar(stat="identity") + scale_fill_viridis_d(option="D") + ylim(c(0, 100)) + labs(title="Land Cover 2020 (%)", y="Percentage", x="Class")
+F19 + F20
+F19 / F20
+
+                        
