@@ -271,6 +271,7 @@ dev.off()
 # Conclusion: The most important data to consider is the decrease in minimum range in 2020 (-90). This indicates areas where red reflectance exceed the NIR reflectance, a clear sign of clorophyll loss: with less photosynthesis, red wavelengths are less absorbed and so vegetation is less or stressed. 
 # Regarding the higher maximum value in 2020 (200), it's likely not due to better vegetation, but rather to different atmospheric illumination or the high overall reflectance of exposed bare rocks or soil, which can reflect strongly across the entire spectrum.
 # Visualizing the NDVI during the years and the difference between them.
+# DVI allowed me to observe the physical behavior of the spectral of the NIR-red bands and the direct loss of photosynthetic efficiency. NDVI is essential to normalize the data by filtering out potential "noise" caused by different illumination or atmospheric conditions.
 par(mfrow=c(1,3))
 plot(ndvi19, col=viridis(100), main="NDVI 2019")
 plot(ndvi20, col=viridis(100), main="NDVI 2020")
@@ -308,7 +309,7 @@ plot(cl20, main = "Land Cover Classification 2020")
 # Conclusion: Due to unsupervised classification function the numbers of the two classes are inverted between 2019 and 2020. The classification results indicate a reduction of 2.5% in Forest class in 2020 after bushfires. Although, because the classification is unssupervised, class proportions represent changes in spatial configuration and spectral similarity rather than true gain or loss in forest covered area. This pattern is consistent with the general loss of NDVI in 2020 and increased landscape fragmentation.
 
 
-# Statystical analysis with ggplot2
+# Statistical analysis with ggplot2
 # Building a dataframe to visualize the class percentage from 2019 and 2020.
 y19 <- c(31.89, 68.11) # Forest, Others
 y20 <- c(29.39, 70.61) # Forest, Others
