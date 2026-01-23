@@ -279,7 +279,7 @@ plot(ndvi20, col=viridis(100), main="NDVI 2020")
 ndvi_diff <- ndvi19 - ndvi20
 plot(ndvi_diff, col=viridis(100), main="NDVI difference: Biomass Loss")
 
-# 2019: NDVI has mean elevated and homogeneous values all over the image. There're spatial continuous consisntency along valleys and slopes. These data represent a structurally stable landscape.
+# 2019: NDVI has mean elevated and homogeneous values all over the image. There're spatial continuous consistency along valleys and slopes. These data represent a structurally stable landscape.
 # 2020: There's a generalized diminuation of NDVI values, with the appearing of large areas with low NDVI. The general pattern is more fragmented and there're more evident contrast between near patches. These are effects caused by the loss of biomass, by the vegetation's stress and by the disomogeneous effects of fire.
 # Conclusion: While pre-fire NDVI values appear relatively high and spatially continuous, post-fire conditions are characterized by reduced NDVI and a fragmented spatial pattern, reflecting heterogeneous vegetation damage and early recovery processes.
 dev.off()
