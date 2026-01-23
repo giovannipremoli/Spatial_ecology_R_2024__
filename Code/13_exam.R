@@ -272,7 +272,7 @@ dev.off()
 # Regarding the higher maximum value in 2020 (200), it's likely not due to better vegetation, but rather to different atmospheric illumination or the high overall reflectance of exposed bare rocks or soil, which can reflect strongly across the entire spectrum.
 # Visualizing the NDVI during the years and the difference between them.
 # DVI allowed me to observe the physical behavior of the spectral of the NIR-red bands and the direct loss of photosynthetic efficiency. NDVI is essential to normalize the data by filtering out potential "noise" caused by different illumination or atmospheric conditions.
-par(mfrow=c(1,3))
+par(mfrow=c(3,1))
 plot(ndvi19, col=viridis(100), main="NDVI 2019")
 plot(ndvi20, col=viridis(100), main="NDVI 2020")
 
