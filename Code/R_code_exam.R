@@ -30,12 +30,12 @@ getwd()
 ## PART 1: 2019 PRE-FIRE ANALYSIS
 
 # Importing the 2019 Sentinel-2 images from Copernicus Browser: https://browser.dataspace.copernicus.eu/. 
-# TC stands for True Colors (bands: red, green and blue)and FC for False Colors (bands: NIR, green, blue). The images I've chosen are all cloudless.
+# TC stands for True Colors (bands: red, green and blue)and FC for False Colors (bands: NIR, red, green). The images I've chosen are all cloudless.
 tc19 <- rast("2019_TC.jpg") # rast() imports the file as a SpatRaster object, preserving its multilayer structure. 
 fc19 <- rast("2019_FC.jpg") 
 
 # Visualizing the two images from 2019.
-par(mfrow=c(2,1))
+par(mfrow=c(2,1)) # Dividing the plotting window into 2 rows and 1 column.
 plot(tc19)
 plot(fc19) 
 
@@ -60,7 +60,7 @@ dev.off()
 
 # Visualizing the different bands in a RGB plot alternating their color representation. This is useful to highlight specific environmental features.
 im.plotRGB(stack19, r=4, g=2, b=3) # NIR on red. Healthy vegetation appear bright red.
-im.plotRGB(stack19, r=1, g=4, b=3) # NIR on green. Active clorophylle is highlighted in green tones.
+im.plotRGB(stack19, r=1, g=4, b=3) # NIR on green. Active clorophylle is highlighted in green tones, easier to distinguish regrowth or stressed areas.
 im.plotRGB(stack19, r=1, g=2, b=4) # NIR on blue. Emphazize surface reflectance properties, useful to identify structural differences in the landscape.
 
 # Calculating the Divergence Vegetation Index (DVI). 
@@ -258,7 +258,7 @@ im.plotRGB(stack20, r=1, g=4, b=3)
 im.plotRGB(stack20, r=1, g=2, b=4)
 
 # First column (NIR on red): in the 2020 image the red color is less continuous, it means that there's a reduction in NIR reflectance due to the fires. The vegetation is less healthy.
-# Second column (NIR on green): in the 2020 image comes out more irregular patches, that's a typical output caused by early regrowing and exposed soil. The vegetation is more stressed.
+# Second column (NIR on green): in the 2020 image comes out more defined patches, there's an increased spatial contrast between zones. That's caused by early regrowing and exposed soil. The vegetation is more stressed.
 # Third column (NIR on blue): in the 2020 image there's more landscape heterogeneity.
 # Conclusion: Multispectral RGB colouring, obtained by combining different spectral bands, highlight an increase in spatial heterogeneity between 2019 and 2020. While the overall geomorphological structure remain recognizable, post-fire images shows a more fragmented spectral pattern, consistent with vegetation healt reduction and patchy recovery following the stressful event.
 # I will make a NDVI analysis to highlight more these differences, not made to evident by the RGB analysis.
@@ -279,8 +279,8 @@ plot(ndvi20, col=viridis(100), main="NDVI 2020")
 ndvi_diff <- ndvi19 - ndvi20
 plot(ndvi_diff, col=viridis(100), main="NDVI difference: Biomass Loss")
 
-# 2019: NDVI has mean elevated and homogeneous values all over the image. There're spatial continuous consistency along valleys and slopes. These data represent a structurally stable landscape.
-# 2020: There's a generalized diminuation of NDVI values, with the appearing of large areas with low NDVI. The general pattern is more fragmented and there're more evident contrast between near patches. These are effects caused by the loss of biomass, by the vegetation's stress and by the disomogeneous effects of fire.
+# 2019: NDVI has mean elevated and homogeneous values all over the image. There's spatial continuous consistency along valleys and slopes. These data represent a structurally stable landscape.
+# 2020: There's a generalized diminution of NDVI values, with the appearing of large areas with low NDVI. The general pattern is more fragmented and there're more evident contrast between near patches. These are effects caused by the loss of biomass, by the vegetation's stress and by the disomogeneous effects of fire.
 # Conclusion: While pre-fire NDVI values appear relatively high and spatially continuous, post-fire conditions are characterized by reduced NDVI and a fragmented spatial pattern, reflecting heterogeneous vegetation damage and early recovery processes.
 dev.off()
 
