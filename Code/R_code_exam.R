@@ -209,7 +209,7 @@ tot20pca <- sum(30.18312, 28.80024, 19.72079, 5.34542)
 # PC1 and PC2 together cover ~70.15% of the original information, which is enough to describe the landscape structure.
 compactpca20 <- pca20[[1]] + pca20[[2]]
 
-# Calculating the Standard Deviation (pcsd19), based on the principal components, to measure the spatial hetereogeneity of the landscape. I'm applying focal() function to calculate SD in a 3x3 moving window.
+# Calculating the Standard Deviation (pcsd20), based on the principal components, to measure the spatial hetereogeneity of the landscape. I'm applying focal() function to calculate SD in a 3x3 moving window.
 # Areas with high SD indicate high landscape complexity.
 pcsd20 <- focal(compactpca20, matrix(1/9,3,3), fun=sd) 
 
