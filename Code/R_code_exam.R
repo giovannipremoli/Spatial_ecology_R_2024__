@@ -199,7 +199,8 @@ pca20 <- im.pca(stack20)
 
 # Calculating the total variability as the sum of SDs of the components.
 tot20pca <- sum(30.18312, 28.80024, 19.72079, 5.34542)
-# 84.04957
+# 84.04957  
+# It's interesting to notice that total variability is almost doubled between 2019 (47.26) and 2020, this is due to the disorder caused by the fires.
 
 # Estimating the percentage of information represented by each axis.
 30.18312*100/84.04957 # 35.91% (PC1)
