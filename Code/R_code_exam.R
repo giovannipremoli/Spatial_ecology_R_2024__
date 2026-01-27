@@ -131,6 +131,8 @@ p19 <- f19*100/tot19 # Percentage for each class
 p19     
 # Class 1 ("Forest") = 31.89005%
 # Class 2 (Others) = 68.10995%     
+# "Forest "= high NDVI vegetation
+# Others = low NDVI surfaces (stressed vegetation, soil, rocks, burned areas)
 
 
 ## PART 2: POST-FIRE ANALYSIS 
@@ -298,6 +300,7 @@ dev.off()
 
 
 # Comparing percentage of land cover landscape classification
+# "Forest "= high NDVI vegetation, Others = low NDVI surfaces (stressed vegetation, soil, rocks, burned areas)
 # 2019:"Forest" coverage -> 31.89005%
 # 2020:"Forest" coverage -> 29.38597%
 # Net loss = ~2.5% of "forest" coverage 
